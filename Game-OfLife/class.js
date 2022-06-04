@@ -32,7 +32,6 @@ class LivingCreature {
         return found;
     }
 }
-
 class Grass extends LivingCreature {
 
 
