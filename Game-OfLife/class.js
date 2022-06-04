@@ -1,13 +1,10 @@
-
-class Grass {
+class LivingCreature {
     constructor(x, y) {
-       
+
         this.x = x;
         this.y = y;
-        this.multiply = 0; 
+        this.multiply = 0;
 
-    
-    
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -19,9 +16,8 @@ class Grass {
             [this.x + 1, this.y + 1]
         ];
     }
-
     getDirections(ch) {
-        
+
         var found = [];
 
         for (let i = 0; i < this.directions.length; i++) {
@@ -35,19 +31,20 @@ class Grass {
         }
         return found;
     }
+}
 
- 
+class Grass extends LivingCreature {
+
+
     mul() {
         this.multiply++;
         if (this.multiply == 3) {
-
-            
             var empty = random(this.getDirections(0));
             if (empty) {
                 var x = empty[0];
                 var y = empty[1];
-               
-                xotArr.push( new Grass(x, y))
+
+                xotArr.push(new Grass(x, y))
 
                 matrix[y][x] = 1;
                 this.multiply = 0;
@@ -63,12 +60,10 @@ class Grass {
 
 class GrassEater {
     constructor(x, y) {
-        
         this.x = x;
         this.y = y;
         this.multiply = 0;
         this.energy = 3;
-
     }
 
 
@@ -85,15 +80,14 @@ class GrassEater {
         ];
     }
 
-    getDirections(t) {
+    getDirections(ch) {
         this.newDirections();
         var found = [];
-
         for (let i = 0; i < this.directions.length; i++) {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == t) {
+                if (matrix[y][x] == ch) {
                     found.push(this.directions[i]);
                 }
             }
@@ -104,13 +98,13 @@ class GrassEater {
 
 
     move() {
-         
+
         var cord = random(this.getDirections(0));
 
         if (cord) {
             var x = cord[0];
             var y = cord[1];
- 
+
             matrix[y][x] = 2;
             matrix[this.y][this.x] = 0;
 
@@ -122,8 +116,8 @@ class GrassEater {
 
 
     eat() {
-       
-        var cord = random( this.getDirections(1));
+
+        var cord = random(this.getDirections(1));
 
         if (cord) {
             var x = cord[0];
@@ -156,7 +150,7 @@ class GrassEater {
 
             this.move();
             this.energy--;
-            if (this.energy < 3) { 
+            if (this.energy < 3) {
                 this.die();
             }
         }
@@ -164,7 +158,7 @@ class GrassEater {
 
 
     mul() {
-      
+
         var cord = random(this.getDirections(0));
 
         if (cord) {
@@ -172,7 +166,7 @@ class GrassEater {
             var y = cord[1];
 
             this.multiply++;
-   
+
             eatArr.push(new GrassEater(x, y));
 
             matrix[y][x] = 2;
@@ -213,7 +207,7 @@ class Davachan {
         ];
     }
 
-    getDirections(t) {
+    getDirections(ch) {
         this.newDirections();
         var found = [];
 
@@ -221,7 +215,7 @@ class Davachan {
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == t) {
+                if (matrix[y][x] == ch) {
                     found.push(this.directions[i]);
                 }
             }
@@ -231,7 +225,7 @@ class Davachan {
 
 
     move() {
-         
+
         var cord = random(this.getDirections(1));
 
         if (cord) {
@@ -249,8 +243,8 @@ class Davachan {
 
 
     eat() {
-       
-        var cord = random( this.getDirections(2));
+
+        var cord = random(this.getDirections(2));
 
         if (cord) {
             var x = cord[0];
@@ -283,7 +277,7 @@ class Davachan {
         } else {
             this.move();
             this.energy--;
-            if (this.energy < 3) { 
+            if (this.energy < 3) {
                 this.die();
             }
         }
@@ -291,7 +285,7 @@ class Davachan {
 
 
     mul() {
-      
+
         var cord = random(this.getDirections(0));
 
         if (cord) {
@@ -299,7 +293,7 @@ class Davachan {
             var y = cord[1];
 
             this.multiply++;
-            
+
             davachanArr.push(new Davachan(x, y));
 
             matrix[y][x] = 3;
@@ -319,8 +313,8 @@ class Davachan {
     }
 }
 
-class bomb{
-    constructor(x, y,energy) {
+class bomb {
+    constructor(x, y,) {
         this.x = x;
         this.y = y;
     }
@@ -337,7 +331,7 @@ class bomb{
             [this.x + 1, this.y + 1]
         ];
     }
-    getDirections(t) {
+    getDirections(ch) {
         this.newDirections();
         var found = [];
 
@@ -345,7 +339,7 @@ class bomb{
             var x = this.directions[i][0];
             var y = this.directions[i][1];
             if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == t) {
+                if (matrix[y][x] == ch) {
                     found.push(this.directions[i]);
                 }
             }
@@ -353,10 +347,10 @@ class bomb{
         return found;
     }
 
-    move() { 
+    move() {
         let cord = random(this.getDirections(0));
         let cord2 = this.getDirections(1);
-        
+
 
 
         if (cord) {
@@ -369,12 +363,12 @@ class bomb{
             this.x = x;
             this.y = y;
 
-        } else if(cord2.length == 8){
-            for(let i = 0;i < 8;i++){
+        } else if (cord2.length == 8) {
+            for (let i = 0; i < 8; i++) {
                 let x = cord2[i][0];
                 let y = cord2[i][1];
                 matrix[y][x] = 2
-                eatArr.push(new GrassEater(x,y));
+                eatArr.push(new GrassEater(x, y));
                 for (let b = 0; b < xotArr.length; b++) {
                     if (x == xotArr[b].x && y == xotArr[b].y) {
                         xotArr.splice(b, 1);

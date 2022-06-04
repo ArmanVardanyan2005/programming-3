@@ -1,6 +1,6 @@
 let side = 9;
-let xotArr = []; 
-let eatArr = []; 
+let xotArr = [];
+let eatArr = [];
 let davachanArr = [];
 let bombArr = [];
 
@@ -16,8 +16,8 @@ function generate(a, b) {
   }
 
 }
-generate(80, 80); 
-for(let i = 0;i < 10;i++){
+generate(80, 80);
+for (let i = 0; i < 10; i++) {
   let k = Math.round(Math.random() * matrix.length)
   let m = Math.round(Math.random() * matrix.length)
   matrix[k][m] = 4
@@ -46,13 +46,13 @@ for (var y = 0; y < matrix.length; y++) {
 }
 function setup() {
 
-    // noStroke();
-    frameRate(10);
-    createCanvas(matrix[0].length * side, matrix.length * side); //կտավի չափերը դնել մատրիցայի չափերին համապատասխան
-    background("grey");
+  // noStroke();
+  frameRate(10);
+  createCanvas(matrix[0].length * side, matrix.length * side); //կտավի չափերը դնել մատրիցայի չափերին համապատասխան
+  background("grey");
 }
 
-    
+
 
 
 function draw() {
@@ -68,12 +68,12 @@ function draw() {
         fill("orange");
       } else if (matrix[y][x] == 0) {
         fill("#acacac");
-      } else if (matrix[y][x] == 3){
+      } else if (matrix[y][x] == 3) {
         fill("red");
-      }else if (matrix[y][x] == 4){
+      } else if (matrix[y][x] == 4) {
         fill("black");
       }
-      rect(x * side, y * side, side, side,80);
+      rect(x * side, y * side, side, side, 80);
     }
   }
 
