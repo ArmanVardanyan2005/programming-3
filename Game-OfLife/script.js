@@ -53,8 +53,6 @@ function setup() {
 }
 
 
-
-
 function draw() {
   // frameRate(30);
   objectsCreation()
