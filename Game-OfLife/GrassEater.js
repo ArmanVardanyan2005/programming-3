@@ -1,4 +1,4 @@
-module.exports = class GrassEater {
+class GrassEater {
     constructor(x, y) {
         this.x = x;
         this.y = y;
@@ -116,7 +116,6 @@ module.exports = class GrassEater {
 
     die() {
         matrix[this.y][this.x] = 0;
-
         for (let i = 0; i < eatArr.length; i++) {
             if (this.x == eatArr[i].x && this.y == eatArr[i].y) {
                 eatArr.splice(i, 1);

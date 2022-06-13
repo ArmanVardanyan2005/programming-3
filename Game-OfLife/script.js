@@ -1,4 +1,4 @@
-let side = 9;
+let side = 10;
 let xotArr = [];
 let eatArr = [];
 let davachanArr = [];
@@ -16,7 +16,7 @@ function generate(a, b) {
   }
 
 }
-generate(80, 80);
+generate(90, 90);
 for (let i = 0; i < 10; i++) {
   let k = Math.round(Math.random() * matrix.length)
   let m = Math.round(Math.random() * matrix.length)
@@ -54,7 +54,7 @@ function setup() {
 
 
 function draw() {
-  // frameRate(30);
+  frameRate(10);
   objectsCreation()
 
 

@@ -1,4 +1,4 @@
-module.exports = class Davachan {
+class Davachan {
     constructor(x, y) {
         this.x = x;
         this.y = y;

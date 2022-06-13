@@ -1,4 +1,4 @@
-module.exports = class Grass {
+class Grass {
     constructor(x, y) {
 
         this.x = x;
@@ -34,8 +34,8 @@ module.exports = class Grass {
     
 
     mul() {
-        this.multiply++;
-        if (this.multiply == 3) {
+        // this.multiply++;
+        // if (this.multiply == 3) {
             var empty = random(this.getDirections(0));
             if (empty) {
                 var x = empty[0];
@@ -47,8 +47,5 @@ module.exports = class Grass {
                 this.multiply = 0;
             }
         }
-    }
-
-
-
+    // }
 }
